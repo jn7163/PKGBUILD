@@ -1,0 +1,22 @@
+pkgname=matlab-r2015b-crack
+pkgver=08.06.00
+pkgrel=1
+pkgdesc="A high-level language for numerical computation and visualization. Crack only."
+arch=('any')
+url="http://www.mathworks.com/"
+license=('GPL3')
+depends=('matlab-r2015b')
+makedepends=('unrar')
+source=("Matlab 2015b Linux64 Crack.rar")
+noextract=('Matlab 2015b Linux64 Crack.rar')
+sha256sums=('SKIP')
+
+package() {
+    cd $srcdir
+    unrar x "Matlab 2015b Linux64 Crack.rar"
+    cd "Matlab 2015b Linux64 Crack"
+    mkdir -p "$pkgdir/opt/tmw/matlab-r2015b/"
+    cp -r R2015b/bin "$pkgdir/opt/tmw/matlab-r2015b/"
+    install -dm755 "$pkgdir/etc/tmw/matlab-r2015b/licenses"
+    install -Dm644 license_standalone.lic "$pkgdir/etc/tmw/matlab-r2015b/licenses"
+}
